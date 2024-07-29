@@ -4,21 +4,19 @@ const bcrypt = require('bcrypt');
 
 const createAdmin = async (req, res) => {
     try {
-        console.log(req.body);
-        const { firstName, lastName, Email, Password, Role } = req.body
-
-        if(!firstName || !lastName || !Email || !Password || !Role)
+        const { firstname, lastname, email, password, role } = req.body
+        if(!firstname || !lastname || !email || !password || !role)
         {
             return res.status(400).send({ status: false, message: error_message.ALL_FIELDS_REQUIRED });
         }
         // hased password
-        const hashedPassword = await bcrypt.hash(Password, 10);
+        const hashedPassword = await bcrypt.hash(password, 10);
         const newSuperAdmin = {
-            firstName,
-            lastName,
-            Email,
-            Password: hashedPassword,
-            Role
+            firstname,
+            lastname,
+            email,
+            password: hashedPassword,
+            role
         }
 
         await SuperAdmin.create(newSuperAdmin)
@@ -32,4 +30,8 @@ const createAdmin = async (req, res) => {
     }
 }
 
+const loginAdmin = async (req, res) => {
+    
+}
+ 
 module.exports = { createAdmin };

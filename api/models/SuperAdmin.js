@@ -2,30 +2,32 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const SuperAdminSchema = new Schema({
-        firstName:{
+        firstname:{
             type:String,
             required: true,
             maxlength: 50,
         },
-        lastName:{
+        lastname:{
             type:String,
             required: true,
             maxlength: 50,
         },
-        Role: {
+        role: {
             type: Schema.Types.ObjectId,
             ref: 'roles'
         },
-        Email : {
+        email : {
             type:String,
             required:true,
             maxlength:255,
             unique:true,
         },
-        Password: {
+        password: {
             type:String,
             required:true
-        }
+        },
+}, {
+    timestamps: true  // This adds createdAt and updatedAt fields
 })
 
 module.exports = mongoose.model('admin', SuperAdminSchema);
