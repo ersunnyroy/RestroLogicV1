@@ -29,7 +29,7 @@ const EmployeesSchema = new Schema({
         ref: "roles"
     },
     isActive: {
-        type:boolean,
+        type:Boolean,
         default: true
     }
 }, {
