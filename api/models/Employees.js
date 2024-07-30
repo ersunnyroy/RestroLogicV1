@@ -23,6 +23,11 @@ const EmployeesSchema = new Schema({
         required:true,
         ref: "restaurants"
     },
+    role: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: "roles"
+    },
     isActive: {
         type:boolean,
         default: true
